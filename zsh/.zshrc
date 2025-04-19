@@ -111,3 +111,6 @@ export NVM_DIR="$HOME/.nvm"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# bun completions
+[ -s "/home/dmytro-fedkiv/.bun/_bun" ] && source "/home/dmytro-fedkiv/.bun/_bun"
