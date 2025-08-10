@@ -1,0 +1,4 @@
+[config]
+allow_images=true
+prompt=Search...
+

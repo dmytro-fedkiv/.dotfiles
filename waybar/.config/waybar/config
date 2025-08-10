@@ -1,0 +1,63 @@
+{
+    "layer": "top",
+    "position": "top",
+    "spacing": 12,
+
+    "modules-left": [
+      "hyprland/workspaces"
+    ],
+    "modules-center": [
+    ],
+    "modules-right": [
+        "network",
+        "battery",
+        "pulseaudio",
+        "clock",
+    ],
+    "hyprland/workspaces": {
+      "all-outputs": false,
+      "warp-on-scroll": false,
+      "tooltip": false,
+      "format": "{name}" 
+    },
+    "clock": {
+        "timezone": "America/New_York",
+        "format": "{:%I:%M %p}",
+        "tooltip": false
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󰂄",
+        "format-plugged": "{capacity}% ",
+        "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰁹"]
+    },
+    "network": {
+        "format-wifi": " ",
+        "format-ethernet": "",
+        "tooltip-format": "{essid}",
+        "tooltip-format-wifi": "{essid} {signalStrength}%",
+        "format-linked": "",
+        "format-disconnected": "⚠",
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-bluetooth-muted": " {icon}",
+        "format-muted": " {format_source}",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    } 
+}
