@@ -1,0 +1,110 @@
+$opacity: 0.5;
+
+$background: #08080c;
+
+$background-transparent: rgba($background, $opacity);
+
+$foreground: #34363e;
+
+$primary: #aaabb2;
+
+* {
+  font-size: medium;
+  font-family: "JetBrainsMono Nerd Font Propo";
+}
+
+// window.bar {
+//   margin: 0.5rem;
+//   padding: 0.25rem;
+//   background-color: $background-transparent;
+//   border-radius: 3rem;
+
+//   .container > box:not(:last-child) {
+//     margin-right: 0.5rem;
+//   }
+
+//   .system-menu {
+//     border-radius: 3rem;
+//     background-color: $background;
+//   }
+
+//   .applications {
+//     border-radius: 3rem;
+//     background-color: $background;
+//   }
+
+//   .power {
+//     border-radius: 3rem;
+//     background-color: $background;
+//   }
+
+//   .control-center {
+//     border-radius: 3rem;
+//     background-color: $background;
+
+//     box {
+//       padding: 0;
+//       margin: 0;
+//     }
+//   }
+
+//   .clock {
+//     border-radius: 3rem;
+//     background-color: $background;
+
+//     label {
+//       font-size: small;
+//     }
+//   }
+
+//   .workspaces {
+//     border-radius: 3rem;
+//     background-color: $background;
+
+//     button.focused {
+//       border-radius: 3rem;
+//       background-color: $foreground;
+//     }
+
+//     button {
+//       image:not(:last-child) {
+//         margin-right: 0.25rem;
+//       }
+//     }
+//   }
+// }
+
+// button {
+//   padding-top: 0;
+//   padding-bottom: 0;
+
+//   background: transparent;
+//   color: $primary;
+//   border: none;
+// }
+
+.app-launcher {
+  background: $background-transparent;
+  border-radius: 1rem;
+  padding: 0.5rem;
+
+  .application {
+    border-radius: 0.5rem;
+    border: none;
+    background: $background;
+
+    box {
+      image {
+        margin-right: 0.5rem;
+      }
+
+      label {
+        color: $primary;
+      }
+    }
+  }
+
+  .application:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+}

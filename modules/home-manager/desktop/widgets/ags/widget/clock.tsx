@@ -1,0 +1,29 @@
+import { createPoll } from "ags/time"
+import { With } from "gnim"
+
+export default function Clock() {
+  const time = createPoll(new Date(), 1000, () => new Date())
+
+  return (
+    <box class="clock">
+      <With value={time}>
+        {(time) => (
+          <menubutton>
+            <label
+              label={time
+                .toLocaleTimeString("en-US", {
+                  weekday: "short",
+                  month: "short",
+                  day: "numeric",
+                  hour: "numeric",
+                  minute: "2-digit",
+                  hour12: true,
+                })
+                .replace(/,/g, "")}
+            />
+          </menubutton>
+        )}
+      </With>
+    </box>
+  )
+}

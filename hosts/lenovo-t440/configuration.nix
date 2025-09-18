@@ -25,8 +25,14 @@
     };
   };
 
+  services.upower.enable = true;
+
+  nixpkgs.config.allowUnfree = true;
+
   environment.systemPackages = [
     pkgs.git
     pkgs.google-chrome
+    pkgs.vscode
+    pkgs.alacritty
   ];
 }
