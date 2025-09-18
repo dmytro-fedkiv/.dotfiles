@@ -1,7 +1,6 @@
 import { For, createBinding, With, createComputed } from "gnim"
 import AstalHyprland from "gi://AstalHyprland"
 import Gio from "gi://Gio?version=2.0"
-import { property, register } from "gnim/gobject"
 
 export default function Workspaces() {
   const hyprland = AstalHyprland.get_default()
@@ -23,9 +22,9 @@ export default function Workspaces() {
 
           return workspace
             ? {
-              workspace,
-              isFocused: workspace.id === focusedWorkspace.id,
-            }
+                workspace,
+                isFocused: workspace.id === focusedWorkspace.id,
+              }
             : { isFocused: false }
         }
       )

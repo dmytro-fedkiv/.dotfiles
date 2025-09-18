@@ -14,7 +14,7 @@ export default function Bar() {
       <centerbox orientation={Gtk.Orientation.HORIZONTAL}>
         <box class="container" $type="start">
           <SystemMenu />
-          <Applications />
+          {/* <Applications /> */}
           <Workspaces />
         </box>
         <box class="container" $type="center" />
