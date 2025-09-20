@@ -33,6 +33,6 @@
     pkgs.git
     pkgs.google-chrome
     pkgs.vscode
-    pkgs.alacritty
+    pkgs.kitty
   ];  
 }
