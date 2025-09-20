@@ -37,6 +37,14 @@
             inputs.home-manager.nixosModules.default
           ];
         };
+
+        desktop-k1kgstf = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/desktop-k1kgstf/configuration.nix
+            inputs.home-manager.nixosModules.default
+          ];
+        };
       };
     };
 }
