@@ -1,7 +1,7 @@
 import { Astal, Gdk, Gtk } from "ags/gtk4"
 import app from "ags/gtk4/app"
 import AstalApps from "gi://AstalApps"
-import AstalHyprland from "gi://AstalHyprland?version=0.1"
+import Gio from "gi://Gio?version=2.0"
 import { createComputed, createState, For } from "gnim"
 
 export default function AppLauncher() {
@@ -35,34 +35,52 @@ export default function AppLauncher() {
       }}
     >
       <box orientation={Gtk.Orientation.VERTICAL}>
-        <box>
-          <entry
-            placeholderText="Search for apps or commands..."
-            text=""
-            onNotifyText={({ text }) => setInput(text.trim())}
-          />
-        </box>
+        <entry
+          placeholderText="Search for apps or commands..."
+          text=""
+          onNotifyText={({ text }) => setInput(text.trim())}
+        />
 
-        <box orientation={Gtk.Orientation.VERTICAL}>
-          <scrolledwindow maxContentHeight={5000}>
-            <For each={applications}>
-              {(application) => (
-                <button
-                  class="application"
-                  onClicked={() => {
-                    app.get_window("app-launcher")?.set_visible(false)
-                    application.launch()
-                  }}
-                >
-                  <box>
-                    <image iconName={application.iconName} />
-                    <label label={application.name} />
-                  </box>
-                </button>
-              )}
-            </For>
-          </scrolledwindow>
-        </box>
+        <scrolledwindow heightRequest={300} widthRequest={500}>
+          <box class="results" orientation={Gtk.Orientation.VERTICAL}>
+            <box class="commands" orientation={Gtk.Orientation.VERTICAL}>
+              <label class="title" halign={Gtk.Align.START} label="Commands" />
+              <button class="command">
+                <box>
+                  <label label="💿 Search files" />
+                </box>
+              </button>
+              <button class="command">
+                <box>
+                  <label label="📋 Clipboard History" />
+                </box>
+              </button>
+            </box>
+            <box class="applications" orientation={Gtk.Orientation.VERTICAL}>
+              <label
+                class="title"
+                halign={Gtk.Align.START}
+                label="Applications"
+              />
+              <For each={applications}>
+                {(application) => (
+                  <button
+                    class="application"
+                    onClicked={() => {
+                      app.get_window("app-launcher")?.set_visible(false)
+                      application.launch()
+                    }}
+                  >
+                    <box>
+                      <image iconName={application.iconName} />
+                      <label label={application.name} />
+                    </box>
+                  </button>
+                )}
+              </For>
+            </box>
+          </box>
+        </scrolledwindow>
       </box>
     </window>
   )

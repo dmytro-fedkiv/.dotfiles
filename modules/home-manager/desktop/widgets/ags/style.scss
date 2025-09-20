@@ -13,98 +13,145 @@ $primary: #aaabb2;
   font-family: "JetBrainsMono Nerd Font Propo";
 }
 
-// window.bar {
-//   margin: 0.5rem;
-//   padding: 0.25rem;
-//   background-color: $background-transparent;
-//   border-radius: 3rem;
+window.bar {
+  margin: 0.5rem;
+  padding: 0.25rem;
+  background-color: $background-transparent;
+  border-radius: 3rem;
 
-//   .container > box:not(:last-child) {
-//     margin-right: 0.5rem;
-//   }
+  .container > box:not(:last-child) {
+    margin-right: 0.5rem;
+  }
 
-//   .system-menu {
-//     border-radius: 3rem;
-//     background-color: $background;
-//   }
+  .system-menu {
+    border-radius: 3rem;
+    background-color: $background;
+  }
 
-//   .applications {
-//     border-radius: 3rem;
-//     background-color: $background;
-//   }
+  .applications {
+    border-radius: 3rem;
+    background-color: $background;
+  }
 
-//   .power {
-//     border-radius: 3rem;
-//     background-color: $background;
-//   }
+  .power {
+    border-radius: 3rem;
+    background-color: $background;
+  }
 
-//   .control-center {
-//     border-radius: 3rem;
-//     background-color: $background;
-
-//     box {
-//       padding: 0;
-//       margin: 0;
-//     }
-//   }
-
-//   .clock {
-//     border-radius: 3rem;
-//     background-color: $background;
-
-//     label {
-//       font-size: small;
-//     }
-//   }
-
-//   .workspaces {
-//     border-radius: 3rem;
-//     background-color: $background;
-
-//     button.focused {
-//       border-radius: 3rem;
-//       background-color: $foreground;
-//     }
-
-//     button {
-//       image:not(:last-child) {
-//         margin-right: 0.25rem;
-//       }
-//     }
-//   }
-// }
-
-// button {
-//   padding-top: 0;
-//   padding-bottom: 0;
-
-//   background: transparent;
-//   color: $primary;
-//   border: none;
-// }
-
-.app-launcher {
-  background: $background-transparent;
-  border-radius: 1rem;
-  padding: 0.5rem;
-
-  .application {
-    border-radius: 0.5rem;
-    border: none;
-    background: $background;
+  .control-center {
+    border-radius: 3rem;
+    background-color: $background;
 
     box {
-      image {
-        margin-right: 0.5rem;
-      }
-
-      label {
-        color: $primary;
-      }
+      padding: 0;
+      margin: 0;
     }
   }
 
-  .application:not(:last-child) {
-    margin-bottom: 0.5rem;
+  .clock {
+    border-radius: 3rem;
+    background-color: $background;
+
+    label {
+      font-size: small;
+    }
+  }
+
+  .workspaces {
+    border-radius: 3rem;
+    background-color: $background;
+
+    button.focused {
+      border-radius: 3rem;
+      background-color: $foreground;
+    }
+
+    button {
+      image:not(:last-child) {
+        margin-right: 0.25rem;
+      }
+    }
+  }
+}
+
+button {
+  padding-top: 0;
+  padding-bottom: 0;
+
+  background: transparent;
+  color: $primary;
+  border: none;
+}
+
+.app-launcher {
+  background: $background;
+  border-radius: 1rem;
+  padding: 0.5rem;
+
+  entry {
+    border: none;
+    background: transparent;
+    color: white;
+  }
+
+  .results {
+    border-top: 1px solid $foreground;
+
+    .applications {
+      .title {
+        color: $primary;
+        font-size: small;
+      }
+
+      .application {
+        border: none;
+        background: transparent;
+        margin-bottom: 0;
+
+        box {
+          image {
+            margin-right: 0.5rem;
+          }
+
+          label {
+            color: white;
+          }
+        }
+      }
+
+      .application:focus {
+        border: none;
+        background: $foreground;
+        border-radius: 0.5rem;
+      }
+    }
+
+    .commands {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+
+      .title {
+        color: $primary;
+        font-size: small;
+      }
+
+      .command {
+        border: none;
+        background: transparent;
+        margin-bottom: 0;
+
+        box {
+          label {
+            color: white;
+          }
+        }
+      }
+
+      .command:focus {
+        border: none;
+        background: $foreground;
+        border-radius: 0.5rem;
+      }
+    }
   }
 }
