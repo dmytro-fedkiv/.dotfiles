@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
 
     ../../modules/home-manager/desktop/hyprland.nix
+    ../../modules/home-manager/desktop/steam.nix
 
     ../../modules/home-manager/code-editor/nvim.nix
 

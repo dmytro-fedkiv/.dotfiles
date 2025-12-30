@@ -3,6 +3,9 @@ import { createBinding, For } from "gnim"
 
 export default function SystemTray() {
   const tray = AstalTray.get_default()
+
+  console.log(tray.items)
+
   const items = createBinding(tray, "items")
 
   const isVisible = items.as((item) => item.length > 0)
