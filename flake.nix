@@ -24,6 +24,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.astal.follows = "astal";
     };
+
+    vicinae = {
+      url = "github:vicinaehq/vicinae";
+    };
   };
 
   outputs =

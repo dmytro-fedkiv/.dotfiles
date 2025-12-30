@@ -12,9 +12,6 @@ export default function Clock() {
             <label
               label={time
                 .toLocaleTimeString("en-US", {
-                  weekday: "short",
-                  month: "short",
-                  day: "numeric",
                   hour: "numeric",
                   minute: "2-digit",
                   hour12: true,

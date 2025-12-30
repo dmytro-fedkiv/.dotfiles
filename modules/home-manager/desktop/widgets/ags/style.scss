@@ -13,7 +13,11 @@ $primary: #aaabb2;
   font-family: "JetBrainsMono Nerd Font Propo";
 }
 
-window.bar {
+window {
+  background: transparent;
+}
+
+.bar {
   margin: 0.5rem;
   padding: 0.25rem;
   background-color: $background-transparent;
@@ -81,77 +85,4 @@ button {
   background: transparent;
   color: $primary;
   border: none;
-}
-
-.app-launcher {
-  background: $background;
-  border-radius: 1rem;
-  padding: 0.5rem;
-
-  entry {
-    border: none;
-    background: transparent;
-    color: white;
-  }
-
-  .results {
-    border-top: 1px solid $foreground;
-
-    .applications {
-      .title {
-        color: $primary;
-        font-size: small;
-      }
-
-      .application {
-        border: none;
-        background: transparent;
-        margin-bottom: 0;
-
-        box {
-          image {
-            margin-right: 0.5rem;
-          }
-
-          label {
-            color: white;
-          }
-        }
-      }
-
-      .application:focus {
-        border: none;
-        background: $foreground;
-        border-radius: 0.5rem;
-      }
-    }
-
-    .commands {
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
-
-      .title {
-        color: $primary;
-        font-size: small;
-      }
-
-      .command {
-        border: none;
-        background: transparent;
-        margin-bottom: 0;
-
-        box {
-          label {
-            color: white;
-          }
-        }
-      }
-
-      .command:focus {
-        border: none;
-        background: $foreground;
-        border-radius: 0.5rem;
-      }
-    }
-  }
 }

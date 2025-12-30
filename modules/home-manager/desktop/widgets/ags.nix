@@ -19,6 +19,7 @@
       inputs.astal.packages.${pkgs.system}.bluetooth
       inputs.astal.packages.${pkgs.system}.hyprland
       inputs.astal.packages.${pkgs.system}.network
+      inputs.astal.packages.${pkgs.system}.tray
     ];
   };
 }
