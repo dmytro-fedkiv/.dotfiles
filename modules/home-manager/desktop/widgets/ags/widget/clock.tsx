@@ -12,7 +12,9 @@ export default function Clock() {
             <label
               label={time
                 .toLocaleTimeString("en-US", {
-                  hour: "numeric",
+                  day: "2-digit",
+                  month: "short",
+                  hour: "2-digit",
                   minute: "2-digit",
                   hour12: true,
                 })

@@ -10,7 +10,7 @@ const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
 export default function Bar() {
   return (
     <window visible anchor={TOP | LEFT | RIGHT}>
-      <box class="bar" widthRequest={720} hexpand halign={Gtk.Align.CENTER}>
+      <box class="bar" widthRequest={820} hexpand halign={Gtk.Align.CENTER}>
         <centerbox
           orientation={Gtk.Orientation.HORIZONTAL}
           hexpand

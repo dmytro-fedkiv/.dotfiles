@@ -18,14 +18,20 @@ export default function Workspaces() {
       Array.from(
         { length: workspaces[workspaces.length - 1].id },
         (_, workspaceId) => {
-          const workspace = hyprland.get_workspace(workspaceId + 1)
+          const id = workspaceId + 1
+          const workspace = hyprland.get_workspace(id)
 
           return workspace
-            ? {
+            ? ({
                 workspace,
+                isEmpty: false,
                 isFocused: workspace.id === focusedWorkspace.id,
-              }
-            : { isFocused: false }
+              } as const)
+            : ({
+                workspace: { id },
+                isEmpty: true,
+                isFocused: false,
+              } as const)
         }
       )
   )
@@ -33,13 +39,16 @@ export default function Workspaces() {
   return (
     <box class="workspaces">
       <For each={workspaces}>
-        {({ workspace, isFocused }) => (
-          <button class={isFocused ? "focused" : "unfocused"}>
-            {workspace ? (
-              <Clients workspace={workspace} />
-            ) : (
-              <label label="" />
-            )}
+        {({ workspace, isEmpty, isFocused }) => (
+          <button
+            class={isFocused ? "focused" : "unfocused"}
+            onClicked={() => {
+              if (!isFocused) {
+                hyprland.dispatch("workspace", String(workspace.id))
+              }
+            }}
+          >
+            {isEmpty ? <label label="" /> : <Clients workspace={workspace} />}
           </button>
         )}
       </For>
