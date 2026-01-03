@@ -4,8 +4,8 @@ import AstalNetwork from "gi://AstalNetwork?version=0.1"
 import AstalMpris from "gi://AstalMpris?version=0.1"
 import { createBinding, With } from "gnim"
 import Pango from "gi://Pango?version=1.0"
-import Gio from "gi://Gio?version=2.0"
 import GdkPixbuf from "gi://GdkPixbuf"
+import AstalWp from "gi://AstalWp?version=0.1"
 
 export default function ControlCenter() {
   return (
@@ -22,7 +22,7 @@ export default function ControlCenter() {
         <popover hasArrow={false} halign={Gtk.Align.CENTER}>
           <Gtk.Grid
             $={(grid) => {
-              grid.set_size_request(340, -1)
+              grid.set_size_request(280, -1)
               grid.hexpand = false
               grid.halign = Gtk.Align.CENTER
 
@@ -34,8 +34,16 @@ export default function ControlCenter() {
               const wifi = Network() as Gtk.Widget
               const bluetooth = Bluetooth() as Gtk.Widget
               const media = MediaPlayer() as Gtk.Widget
+              const brightness = Brightness() as Gtk.Widget
+              const volume = Volume() as Gtk.Widget
 
-              for (const widget of [wifi, bluetooth, media]) {
+              for (const widget of [
+                wifi,
+                bluetooth,
+                media,
+                brightness,
+                volume,
+              ]) {
                 widget.set_halign(Gtk.Align.FILL)
                 widget.set_valign(Gtk.Align.FILL)
 
@@ -46,6 +54,8 @@ export default function ControlCenter() {
               grid.attach(wifi, 0, 0, 1, 1)
               grid.attach(bluetooth, 0, 1, 1, 1)
               grid.attach(media, 1, 0, 1, 2)
+              grid.attach(brightness, 0, 2, 2, 1)
+              grid.attach(volume, 0, 3, 2, 1)
             }}
           />
         </popover>
@@ -99,7 +109,16 @@ function NetworkWiFi() {
 
         <box class="information" orientation={Gtk.Orientation.VERTICAL}>
           <label class="title" halign={Gtk.Align.START} label="Wi-Fi" />
-          <label class="details" halign={Gtk.Align.START} label={wifi.ssid} />
+          <label
+            class="details"
+            xalign={0}
+            maxWidthChars={8}
+            hexpand
+            halign={Gtk.Align.FILL}
+            wrap={true}
+            wrapMode={Pango.WrapMode.WORD_CHAR}
+            label={wifi.ssid}
+          />
         </box>
       </box>
     </button>
@@ -226,6 +245,48 @@ function MediaPlayer() {
           </box>
         )}
       </With>
+    </box>
+  )
+}
+
+function Brightness() {
+  return (
+    <box class="panel" orientation={Gtk.Orientation.VERTICAL}>
+      <label class="title" halign={Gtk.Align.START} label="Display" />
+      <box class="slider">
+        <label label="" />
+        <slider
+          hexpand
+          value={0.5}
+          min={0}
+          max={1}
+          onChangeValue={({ value }) => console.log(value)}
+        />
+        <label label="" />
+      </box>
+    </box>
+  )
+}
+
+function Volume() {
+  const wireplumber = AstalWp.get_default()
+  const defaultOutput = wireplumber.audio.defaultSpeaker
+
+  return (
+    <box class="panel" orientation={Gtk.Orientation.VERTICAL}>
+      <label class="title" halign={Gtk.Align.START} label="Sound" />
+      <box class="slider">
+        <label label="" />
+        <slider
+          drawValue={false}
+          hexpand
+          min={0}
+          max={1.5}
+          value={createBinding(defaultOutput, "volume")}
+          onChangeValue={({ value }) => defaultOutput.set_volume(value)}
+        />
+        <label label="" />
+      </box>
     </box>
   )
 }

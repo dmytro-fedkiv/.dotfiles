@@ -164,7 +164,7 @@ window {
     }
 
     popover {
-      * {
+      > * {
         background: transparent;
       }
 
@@ -206,7 +206,7 @@ window {
           }
 
           .details {
-            font-size: small;
+            font-size: x-small;
             font-weight: 500;
             color: rgba($background-secondary, $alpha: 0.7);
           }
@@ -253,6 +253,48 @@ window {
             label {
               font-size: 1.7rem;
               letter-spacing: -0.35rem;
+            }
+          }
+        }
+      }
+    }
+
+    .panel {
+      padding: 0.7rem;
+      padding-bottom: 0;
+
+      border: 1px solid rgba($border, $alpha: 0.2);
+      border-radius: 1.5rem;
+
+      background: rgba($background-primary, $alpha: 0.1);
+      box-shadow: 0 8px 12px -2px rgba(black, 0.1);
+
+      .title {
+        font-size: small;
+        font-weight: 700;
+        color: rgba($background-secondary, $alpha: 0.7);
+      }
+
+      .slider {
+        font-size: x-large;
+        font-family: "JetBrainsMono Nerd Font Mono", monospace;
+        color: $background-primary;
+
+        scale {
+          trough {
+            padding: 0.15rem;
+            background: rgba($text-secondary, $alpha: 0.7);
+
+            highlight {
+              padding: 0.15rem;
+              background: $background-secondary;
+            }
+
+            slider {
+              padding: 0rem 0.2rem;
+
+              border-radius: 1rem;
+              background: $background-primary;
             }
           }
         }
