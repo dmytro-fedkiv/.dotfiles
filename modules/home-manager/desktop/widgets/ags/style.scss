@@ -1,93 +1,273 @@
-$opacity: 0.5;
+$background-primary: #fafafb;
+$background-secondary: #f2f3f6;
+$background-tertiary: #eaecf2;
 
-$background: #08080c;
+$border: #d8dae6;
 
-$background-transparent: rgba($background, $opacity);
+$text-primary: #1b1b22;
+$text-secondary: #4e5160;
+$text-tertiary: #6b6f80;
 
-$foreground: #34363e;
-
-$primary: #aaabb2;
-
-* {
-  font-size: medium;
-  font-family: "JetBrainsMono Nerd Font Propo";
-}
+$accent-primary: #7c3aed;
+$accent-secondary: rgb(134, 87, 209);
 
 window {
   background: transparent;
 }
 
+* {
+  border: none;
+  box-shadow: none;
+}
+
 .bar {
   margin: 0.5rem;
-  padding: 0.25rem;
-  background-color: $background-transparent;
+
+  border: 1px solid rgba($border, $alpha: 0.2);
   border-radius: 3rem;
 
-  .container > box:not(:last-child) {
-    margin-right: 0.5rem;
-  }
+  background: rgba($background-primary, $alpha: 0.1);
+  box-shadow: 0 8px 12px -2px rgba(black, 0.1);
 
   .system-menu {
-    border-radius: 3rem;
-    background-color: $background;
-  }
+    padding: 0.3rem;
 
-  .system-tray {
-    border-radius: 3rem;
-    background-color: $background;
-  }
+    menubutton {
+      padding: 0 0.6rem;
+      border-radius: 3rem;
 
-  .applications {
-    border-radius: 3rem;
-    background-color: $background;
-  }
+      button {
+        padding: 0;
+        background: transparent;
 
-  .power {
-    border-radius: 3rem;
-    background-color: $background;
-  }
+        font-family: "JetBrainsMono Nerd Font Mono", monospace;
+        font-size: large;
+        color: rgba($background-secondary, $alpha: 0.7);
+      }
+    }
 
-  .control-center {
-    border-radius: 3rem;
-    background-color: $background;
+    menubutton:hover {
+      background: rgba($accent-secondary, $alpha: 0.5);
+    }
 
-    box {
-      padding: 0;
-      margin: 0;
+    menubutton.focused {
+      border-radius: 3rem;
+      background: rgba($accent-secondary, $alpha: 0.5);
+    }
+
+    popover {
+      margin-top: 0.5rem;
+
+      border-radius: 0.7rem;
+      background: rgba($background-primary, $alpha: 0.9);
+
+      * {
+        padding: 0.2rem;
+        background: transparent;
+      }
+
+      .separator {
+        padding: 0;
+        margin-bottom: 0.3rem;
+        background: rgba($text-tertiary, 0.6);
+      }
+
+      .item {
+        padding: 0 0.5rem;
+
+        font-size: x-small;
+        font-weight: 600;
+        color: $text-secondary;
+
+        .icon {
+          font-size: medium;
+          margin-right: 0.5rem;
+        }
+      }
+
+      .item:not(:last-child) {
+        margin-bottom: 0.1rem;
+      }
+
+      .item:hover {
+        border-radius: 0.5rem;
+        background: rgba($accent-secondary, 0.8);
+
+        color: $background-secondary;
+      }
     }
   }
 
-  .clock {
-    border-radius: 3rem;
-    background-color: $background;
+  .system-tray {
+    padding: 0.3rem 0;
 
-    label {
-      font-size: small;
+    border-top-right-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+
+    button {
+      padding: 0 0.5rem;
+      background: transparent;
+    }
+
+    button:last-child {
+      padding-right: 0.7rem;
     }
   }
 
   .workspaces {
-    border-radius: 3rem;
-    background-color: $background;
-
-    button.focused {
-      border-radius: 3rem;
-      background-color: $foreground;
-    }
+    padding: 0.3rem 0;
 
     button {
-      image:not(:last-child) {
-        margin-right: 0.25rem;
+      padding: 0 0.6rem;
+      border-radius: 3rem;
+      background: transparent;
+      color: $background-secondary;
+    }
+
+    button:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+
+    button:hover {
+      background: rgba($accent-secondary, $alpha: 0.5);
+    }
+
+    button.focused {
+      background: rgba($accent-primary, $alpha: 0.8);
+    }
+  }
+
+  .control-center {
+    padding: 0.3rem;
+
+    menubutton {
+      padding: 0 0.6rem;
+      border-radius: 3rem;
+
+      button {
+        padding: 0;
+        background: transparent;
+
+        font-family: "JetBrainsMono Nerd Font Mono", monospace;
+        font-size: large;
+        color: rgba($background-secondary, $alpha: 0.7);
+      }
+    }
+
+    menubutton:hover {
+      background: rgba($accent-secondary, $alpha: 0.5);
+    }
+
+    menubutton.focused {
+      border-radius: 3rem;
+      background: rgba($accent-secondary, $alpha: 0.5);
+    }
+
+    popover {
+      * {
+        background: transparent;
+      }
+
+      .pill {
+        padding: 0.5rem;
+
+        border: 1px solid rgba($border, $alpha: 0.2);
+        border-radius: 3rem;
+
+        background: rgba($background-primary, $alpha: 0.1);
+        box-shadow: 0 8px 12px -2px rgba(black, 0.1);
+
+        .icon {
+          padding: 0 0.7rem;
+
+          border-radius: 3rem;
+          background: $background-primary;
+
+          font-family: "JetBrainsMono Nerd Font Mono", monospace;
+          font-size: 2rem;
+        }
+
+        .icon.connected {
+          color: $accent-primary;
+        }
+
+        .icon.disconnected {
+          color: gray;
+        }
+
+        .information {
+          margin-left: 0.5rem;
+          font-family: "Inter", sans-serif;
+
+          .title {
+            font-size: small;
+            font-weight: 700;
+            color: rgba($background-primary, $alpha: 0.7);
+          }
+
+          .details {
+            font-size: small;
+            font-weight: 500;
+            color: rgba($background-secondary, $alpha: 0.7);
+          }
+        }
+      }
+
+      .tile {
+        padding: 0.7rem;
+        padding-bottom: 0;
+
+        border: 1px solid rgba($border, $alpha: 0.2);
+        border-radius: 2rem;
+
+        background: rgba($background-primary, $alpha: 0.1);
+        box-shadow: 0 8px 12px -2px rgba(black, 0.1);
+
+        .cover {
+          border-radius: 0.5rem;
+        }
+
+        .title {
+          font-size: small;
+          font-weight: 700;
+          color: rgba($background-secondary, $alpha: 0.7);
+        }
+
+        .controls {
+          font-family: "JetBrainsMono Nerd Font Mono", monospace;
+
+          .previous {
+            label {
+              font-size: 1.7rem;
+              letter-spacing: -0.35rem;
+            }
+          }
+
+          .play {
+            label {
+              font-size: 2.5rem;
+            }
+          }
+
+          .next {
+            label {
+              font-size: 1.7rem;
+              letter-spacing: -0.35rem;
+            }
+          }
+        }
       }
     }
   }
-}
 
-button {
-  padding-top: 0;
-  padding-bottom: 0;
+  .clock {
+    button {
+      padding: 0 0.6rem;
+      background: transparent;
 
-  background: transparent;
-  color: $primary;
-  border: none;
+      font-size: small;
+      font-weight: 600;
+      color: rgba($background-secondary, $alpha: 0.7);
+    }
+  }
 }

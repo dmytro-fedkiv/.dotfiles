@@ -18,6 +18,7 @@
       inputs.astal.packages.${pkgs.system}.battery
       inputs.astal.packages.${pkgs.system}.bluetooth
       inputs.astal.packages.${pkgs.system}.hyprland
+      inputs.astal.packages.${pkgs.system}.mpris
       inputs.astal.packages.${pkgs.system}.network
     ];
   };
